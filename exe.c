@@ -12,20 +12,20 @@ void exec_cmd(char **shll)
 
 	if (shll)
 	{
-		pd = vfork();
-
+		pd = fork();
 		if (pd == -1)
 		{
-			printf("Error in vfork\n");
+			perror("Error in fork");
+			exit(EXIT_FAILURE);
 		}
 		else if (pd == 0)
 		{
 			if (execve(shll[0], shll, environ) == -1)
 			{
-				printf("%s: not found\n", shll[0]);
-				_exit(EXIT_FAILURE);
+				perror(shll[0]);
+				exit(EXIT_FAILURE);
 			}
-			_exit(EXIT_SUCCESS);
+			exit(EXIT_SUCCESS);
 		}
 		else
 		{
