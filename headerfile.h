@@ -28,5 +28,6 @@ int my_atoi(char *str);
 int _strcmp(char *str1, char *str2);
 void *_rllc(void *ptr, unsigned int old_size, unsigned int new_size);
 char *strdp(char *str);
+int _strcmp2(const char *str1, const char *str2);
 
 #endif

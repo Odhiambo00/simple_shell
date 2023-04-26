@@ -22,11 +22,11 @@ void echo(int insrt)
 			free(ln);
 			exit(0);
 		}
-		if (strcmp(ln, "\n") == 0)
+		if (_strcmp2(ln, "\n") == 0)
 			continue;
 		shll = str_break(ln, " \t\r\n");
 		_condns(shll, ln);
-		if (strcmp(shll[0], "env") == 0)
+		if (_strcmp2(shll[0], "env") == 0)
 		{
 			prt_enve();
 			free_arr(shll);
@@ -36,7 +36,7 @@ void echo(int insrt)
 			get_path(shll);
 		if (shll[0] == NULL)
 		{
-			printf("Command not found\n");
+			write(STDERR_FILENO, "Command not found\n", 18);
 			free(ln);
 			ln = NULL;
 			free_arr(shll);

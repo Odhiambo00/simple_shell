@@ -80,3 +80,20 @@ int _strcmp(char *str1, char *str2)
 	}
 	return (str1[i] - str2[i]);
 }
+
+/**
+ * _strcmp2 - compares 2 strings
+ * @str1: string 1
+ * @str2: string 2
+ * Return: 0 if strings are equal else the difference
+ */
+
+int _strcmp2(const char *str1, const char *str2)
+{
+	while (*str1 && (*str1 == *str2))
+	{
+		str1++;
+		str2++;
+	}
+	return (*(const unsigned char *)str1 - *(const unsigned char *)str2);
+}
