@@ -8,18 +8,25 @@
 void get_path(char **shll)
 {
 	int i;
-	char **tkn = NULL, *pth = strdup(getenv("PATH")), *tempr = NULL;
+	int len = 0;
+	char **tkn = NULL, *pth = NULL, *tempr = NULL, *env = environ[0];
+
+	while (env[len] != '=')
+	{
+		len++;
+	}
+	pth = (char *)malloc(sizeof(char) * (_strlen(env + len + 1) + 1));
+	_strcpy(pth, env + len + 1);
 
 	tkn = str_break(pth, ":");
 	free(pth);
-	pth = NULL;
 	for (i = 0; tkn[i]; i++)
 	{
-		tempr = (char *)malloc((strlen(tkn[i]) + strlen(shll[0]) + 2
-				       ) * sizeof(char));
-		strcpy(tempr, tkn[i]);
-		strcat(tempr, "/");
-		strcat(tempr, shll[0]);
+		tempr = (char *)malloc((_strlen(tkn[i] + _strlen(shll[0]) + 2
+						) * sizeof(char)));
+		_strcpy(tempr, tkn[i]);
+		append_str(tempr, "/");
+		append_str(tempr, shll[0]);
 		if (access(tempr, F_OK) == 0)
 			break;
 		free(tempr);
@@ -29,3 +36,4 @@ void get_path(char **shll)
 	free(shll[0]);
 	shll[0] = tempr;
 }
+

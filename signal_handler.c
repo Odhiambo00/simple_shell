@@ -8,6 +8,6 @@
 void sgt_Handler(__attribute__((unused)) int sg_num)
 {
 	signal(SIGINT, sgt_Handler);
-	printf("\n");
+	write(STDOUT_FILENO, "\n", 1);
 	write(STDOUT_FILENO, "$ ", 2);
 }
