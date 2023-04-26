@@ -15,18 +15,16 @@ void get_path(char **shll)
 	pth = NULL;
 	for (i = 0; tkn[i]; i++)
 	{
-		tempr = (char *)malloc((strlen(tkn[i]) + strlen(shll[0]) + 2) *
-				sizeof(char));
+		tempr = (char *)malloc((strlen(tkn[i]) + strlen(shll[0]) + 2
+				       ) * sizeof(char));
 		strcpy(tempr, tkn[i]);
 		strcat(tempr, "/");
 		strcat(tempr, shll[0]);
 		if (access(tempr, F_OK) == 0)
 			break;
-
 		free(tempr);
 		tempr = NULL;
 	}
-
 	free_arr(tkn);
 	free(shll[0]);
 	shll[0] = tempr;
