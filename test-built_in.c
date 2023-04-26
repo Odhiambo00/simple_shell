@@ -8,12 +8,12 @@
 
 void _condns(char **shll, char *ln)
 {
-	if (strcmp(shll[0], "exit") == 0)
+	if (_strcmp(shll[0], "exit") == 0)
 	{
 		free(ln);
 		if (shll[1])
 		{
-			exit(atoi(shll[1]));
+			exit(my_atoi(shll[1]));
 		}
 		free_arr(shll);
 		exit(0);

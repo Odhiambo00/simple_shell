@@ -60,3 +60,23 @@ char *append_str(char *dstn, const char *sce)
 
 	return (dstn);
 }
+
+/**
+ * _strcmp - function that compares two strings
+ * @str1: string 1
+ * @str2: string 2
+ * Return: 0 if strings are equal if not the difference
+ */
+
+int _strcmp(char *str1, char *str2)
+{
+	int i = 0;
+
+	while (str1[i] == str2[i])
+	{
+		if (str1[i] == '\0')
+			return (0);
+		i++;
+	}
+	return (str1[i] - str2[i]);
+}

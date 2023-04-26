@@ -24,4 +24,9 @@ ssize_t _strlen(char *s);
 ssize_t _puts(char *str);
 char *_strcpy(char *dstn, char *sce);
 char *append_str(char *dstn, const char *sce);
+int my_atoi(char *str);
+int _strcmp(char *str1, char *str2);
+void *_rllc(void *ptr, unsigned int old_size, unsigned int new_size);
+char *strdp(char *str);
+
 #endif

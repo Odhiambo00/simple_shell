@@ -15,13 +15,13 @@ char **str_break(char *ln, char *dlm)
 	Ptr = strtok(ln, dlm);
 	while (Ptr)
 	{
-		shll = realloc(shll, ((i + 1) * sizeof(char *)));
-		shll[i] = strdup(Ptr);
+		shll = _rllc(shll, ((i + 1) * sizeof(char *)));
+		shll[i] = strdp(Ptr);
 		Ptr = strtok(NULL, dlm);
 		i++;
 	}
 
-	shll = realloc(shll, ((i + 1) * sizeof(char *)));
+	shll = _rllc(shll, ((i + 1) * sizeof(char *)));
 	shll[i] = NULL;
 
 	return (shll);
