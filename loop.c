@@ -4,6 +4,7 @@
  * echo - function that loops the value input by user to be returned
  * @insrt: return value of isatty either 0 or 1
  */
+
 void echo(int insrt)
 {
 	char *ln = NULL, **shll = NULL;
