@@ -15,14 +15,13 @@ void get_path(char **shll)
 	{
 		len++;
 	}
-	pth = (char *)malloc(sizeof(char) * (_strlen(env + len + 1) + 1));
+	pth = malloc(sizeof(char) * (_strlen(env + len + 1) + 1));
 	_strcpy(pth, env + len + 1);
-
 	tkn = str_break(pth, ":");
 	free(pth);
 	for (i = 0; tkn[i]; i++)
 	{
-		tempr = (char *)malloc((_strlen(tkn[i] + _strlen(shll[0]) + 2
+		tempr = malloc((_strlen(tkn[i] + _strlen(shll[0]) + 2
 						) * sizeof(char)));
 		_strcpy(tempr, tkn[i]);
 		append_str(tempr, "/");
@@ -33,7 +32,18 @@ void get_path(char **shll)
 		tempr = NULL;
 	}
 	free_arr(tkn);
+	if (tempr != NULL && (_strcmp(shll[0], "ls") == 0 || _strcmp(shll[0],
+		"echo") == 0 || _strcmp(shll[0], "rm") == 0))
+	{
+		free(shll[0]);
+		shll[0] = tempr;
+		return;
+	}
+	if (tempr != NULL)
+	{
+		free(tempr);
+	}
 	free(shll[0]);
-	shll[0] = tempr;
+	shll[0] = NULL;
 }
 
